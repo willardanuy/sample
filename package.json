@@ -3,8 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "babel-jest": "^24.7.1",
+    "classnames": "2.2.6",
+    "iview-report": "git+https://iview_token:XMcNjZRDqXqUiHi2eRFY@gitlab.softbox.com.br/PeD/iview-report.git#feature/remove-pkg-react-md",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-motion": "^0.5.2",
+    "react-prop-types": "0.4.0",
     "react-scripts": "3.0.0"
   },
   "scripts": {

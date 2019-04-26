@@ -1,68 +1,69 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
+### `Step`
 
-### `npm start`
+```sh
+- yarn create react-app my-app
+- yarn add git+https://iview_token:XMcNjZRDqXqUiHi2eRFY@gitlab.softbox.com.br/PeD/iview-report.git#feature/remove-pkg-react-md
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+# `Import`
+```javascript
+ <script src="https://maas.softbox.com.br/iview/loader.js" type="text/javascript"></script>
 
-### `npm test`
+  <script type="text/javascript">
+    magalu.iView.load('2', [], function() {
+      console.log('Script Carregado!')
+    })
+  </script>
+```
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### `Example`
 
-### `npm run build`
+```javascript
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+import React, { Component } from 'react';
+import Report from  'iview-report/dist/iview-report.min';
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+import './App.css';
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+const reportJSON = {
+  "filters": [
+    {
+        "name": "company",
+        "label": "Empresa",
+        "options": {
+            "motorola": "Motorola",
+            "samsung": "Samsung",
+            "apple": "Apple",
+        },
+        "value": [
+            "motorola",
+            "apple",
+        ],
+    }],
+    "widgets": [{ 
+      "idRelatorio": "idx",
+      "type": "serial",
+      "config": {"valueAxes":[{"axisAlpha":0,"position":"left","title":"Visitors from country"}],"startDuration":1,"graphs":[{"balloonText":"<b>[[category]]: [[value]]</b>","fillColorsField":"color","fillAlphas":0.9,"lineAlpha":0.2,"type":"column","valueField":"visits"}],"chartCursor":{"categoryBalloonEnabled":false,"cursorAlpha":0,"zoomable":false},"categoryField":"country","categoryAxis":{"gridPosition":"start","labelRotation":45}},
+      "data": [{"country":"USA","visits":3025,"color":"#FF0F00"},{"country":"China","visits":1882,"color":"#FF6600"},{"country":"Japan","visits":1809,"color":"#FF9E01"},{"country":"Germany","visits":1322,"color":"#FCD202"},{"country":"UK","visits":1122,"color":"#F8FF01"},{"country":"France","visits":1114,"color":"#B0DE09"},{"country":"India","visits":984,"color":"#04D215"},{"country":"Spain","visits":711,"color":"#0D8ECF"},{"country":"Netherlands","visits":665,"color":"#0D52D1"},{"country":"Russia","visits":580,"color":"#2A0CD0"},{"country":"South Korea","visits":443,"color":"#8A0CCF"},{"country":"Canada","visits":441,"color":"#CD0D74"}]
 
-### `npm run eject`
+  }]
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+}
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+class App extends Component {
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+  render() {
+    return <div>
+      <div style={{ padding: 16 }}>
+        <Report {...reportJSON} />
+      </div>
+    </div>
+  }
+}
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+export default App
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+```
